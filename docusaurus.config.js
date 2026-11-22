@@ -89,9 +89,8 @@ const config = {
                 to: 'features',
               },
               {
-                type: 'doc',
-                docId: 'podman',
                 label: 'Documentation',
+                to: '/docs/commands',
               },
             ],
           },
@@ -136,7 +135,7 @@ const config = {
               },
               {
                 label: 'Documentation',
-                to: 'docs/',
+                to: '/docs/commands',
               },
             ],
           },
