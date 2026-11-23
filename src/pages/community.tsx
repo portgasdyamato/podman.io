@@ -49,7 +49,7 @@ function ActionDropdown({
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 z-50 mt-2 w-72 rounded-md bg-white p-2 shadow-2xl ring-1 ring-black/5 dark:bg-[#201c2e] dark:ring-white/10 sm:w-80">
+        <div className="absolute left-0 z-50 mt-2 w-72 rounded-md bg-white p-2 shadow-2xl ring-1 ring-black/5 dark:bg-[#242328] dark:ring-white/10 sm:w-80">
           <ul className="m-0 list-none p-0">
             {links.map((link, idx) => (
               <li key={idx}>
@@ -205,15 +205,9 @@ export default function Community(): JSX.Element {
           SECTION 1: COMMUNITY CHAT & SOCIAL LINKS
           Circular Purple Containers with White Icons
       ============================================================ */}
-      <section id="community-chat" className="bg-white py-12 dark:bg-[#120f1d] sm:py-16">
+      <section id="community-chat" className="bg-white py-12 dark:bg-[#1B1B1D] sm:py-16">
         <div className="container mx-auto px-4 lg:px-8 xl:max-w-[1240px]">
           <div className="mb-8 text-center sm:mb-12">
-            <div
-              style={{ backgroundColor: '#892CA0', color: '#ffffff' }}
-              className="shadow-xs mb-3 inline-flex items-center gap-2 rounded-full bg-[#892CA0] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white">
-              <Icon icon="material-symbols:forum-rounded" className="text-base text-white" />
-              <span className="text-white">Live Chat &amp; Discussions</span>
-            </div>
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               Connect With the Community
             </h2>
@@ -259,17 +253,11 @@ export default function Community(): JSX.Element {
           SECTION 2: CURRENT TIME & MAINTAINER AVAILABILITY
           Horizontal Split: Left = Heading & Subheading; Right = Vertically Stacked Clocks
       ============================================================ */}
-      <section id="current-time" className="sm:py-18 bg-white py-14 dark:bg-[#120f1d]">
+      <section id="current-time" className="sm:py-18 bg-white py-14 dark:bg-[#1B1B1D]">
         <div className="container mx-auto px-4 lg:px-8 xl:max-w-[1240px]">
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
             {/* Left Column: Heading & Subheading */}
             <div className="lg:col-span-5">
-              <div
-                style={{ backgroundColor: '#892CA0', color: '#ffffff' }}
-                className="shadow-xs mb-3 inline-flex items-center gap-2 rounded-full bg-[#892CA0] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                <Icon icon="material-symbols:schedule-rounded" className="text-base text-white" />
-                <span className="text-white">Current Time</span>
-              </div>
               <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                 Community Time Zones
               </h2>
@@ -351,15 +339,9 @@ export default function Community(): JSX.Element {
           SECTION 4: COMMUNITY MEETINGS (STRICTLY PRESERVED INTACT)
           Light purple container (#f3e8ff/50)
       ============================================================ */}
-      <section id="community-meetings" className="bg-purple-100/50 py-12 dark:bg-[#161222] sm:py-16">
+      <section id="community-meetings" className="bg-purple-100/50 py-12 dark:bg-[#1B1B1D] sm:py-16">
         <div className="container mx-auto px-4 lg:px-8 xl:max-w-[1240px]">
           <div className="mb-8 text-center sm:mb-10">
-            <div
-              style={{ backgroundColor: '#892CA0', color: '#ffffff' }}
-              className="shadow-xs mb-3 inline-flex items-center gap-2 rounded-full bg-[#892CA0] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white">
-              <Icon icon="material-symbols:video-camera-front-rounded" className="text-base text-white" />
-              <span className="text-white">Live Meetings &amp; Syncs</span>
-            </div>
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {communityMeetings.title}
             </h2>
@@ -377,9 +359,9 @@ export default function Community(): JSX.Element {
           SECTION 5: PODMAN DESKTOP CALLOUT (Matching downloads.tsx)
           Solid light purple container (#f3e8ff), NO gradient
       ============================================================ */}
-      <section className="bg-white py-10 dark:bg-[#120f1d] sm:py-14">
+      <section className="bg-white py-10 dark:bg-[#1B1B1D] sm:py-14">
         <div className="container mx-auto px-4 lg:px-8 xl:max-w-[1240px]">
-          <div className="flex flex-col justify-between gap-6 rounded-md border border-black/[0.08] bg-purple-100 p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#1e172a] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] sm:flex-row sm:items-center sm:p-8">
+          <div className="flex flex-col justify-between gap-6 rounded-md border border-black/[0.08] bg-purple-100 p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#242328] dark:shadow-[0_2px_10px_rgba(0,0,0,0.22)] sm:flex-row sm:items-center sm:p-8">
             <div className="flex items-start gap-4 sm:items-center">
               <img
                 src={desktopLogoSrc}
@@ -387,12 +369,6 @@ export default function Community(): JSX.Element {
                 className="h-14 w-14 shrink-0 object-contain sm:h-16 sm:w-16"
               />
               <div className="space-y-1">
-                <div
-                  style={{ backgroundColor: '#892CA0', color: '#ffffff' }}
-                  className="shadow-xs inline-flex items-center gap-1.5 rounded-md bg-[#892CA0] px-2.5 py-0.5 text-xs font-bold text-white">
-                  <Icon icon="material-symbols:desktop-windows-rounded" className="text-sm text-white" />
-                  <span className="text-white">Podman Desktop GUI Community</span>
-                </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
                   Prefer a Graphical Desktop Interface?
                 </h3>
@@ -430,15 +406,9 @@ export default function Community(): JSX.Element {
       {/* ============================================================
           SECTION 6: FULL MAILING LIST SECTION (Restored from Original)
       ============================================================ */}
-      <section id="mailing-list" className="bg-white py-16 dark:bg-[#120f1d] sm:py-20">
+      <section id="mailing-list" className="bg-white py-16 dark:bg-[#1B1B1D] sm:py-20">
         <div className="container mx-auto px-4 lg:px-8 xl:max-w-[1240px]">
           <div className="mb-10 text-center sm:mb-12">
-            <div
-              style={{ backgroundColor: '#892CA0', color: '#ffffff' }}
-              className="shadow-xs mb-3 inline-flex items-center gap-2 rounded-full bg-[#892CA0] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white">
-              <Icon icon="material-symbols:mail-outline-rounded" className="text-base text-white" />
-              <span className="text-white">Email Discussions</span>
-            </div>
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {mailingList.title}
             </h2>
@@ -449,7 +419,7 @@ export default function Community(): JSX.Element {
 
           <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
             {/* Left Column: Subscribe Options (Full Height Card in bg-purple-100/70 with Unified Drop Shadow) */}
-            <div className="flex h-full flex-col justify-between rounded-md border border-black/[0.08] bg-purple-100/70 p-7 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#1e172a] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] sm:p-9 lg:col-span-7">
+            <div className="flex h-full flex-col justify-between rounded-md border border-black/[0.08] bg-purple-100/70 p-7 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#242328] dark:shadow-[0_2px_10px_rgba(0,0,0,0.22)] sm:p-9 lg:col-span-7">
               <div>
                 <div className="flex items-center gap-3">
                   <div className="shadow-xs flex h-11 w-11 items-center justify-center rounded-md bg-[#892CA0] text-white">
@@ -561,7 +531,7 @@ export default function Community(): JSX.Element {
             {/* Right Column: Screenshot Image + Browse Inside + Node 1 (Equal Height) */}
             <div className="flex h-full flex-col justify-between gap-6 lg:col-span-5">
               {/* Image & Browse Archive Card */}
-              <div className="flex flex-1 flex-col justify-between rounded-md border border-black/[0.08] bg-purple-100/70 p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#1e172a] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] sm:p-7">
+              <div className="flex flex-1 flex-col justify-between rounded-md border border-black/[0.08] bg-purple-100/70 p-6 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#242328] dark:shadow-[0_2px_10px_rgba(0,0,0,0.22)] sm:p-7">
                 <div>
                   {/* Screenshot Image with controlled height */}
                   <div className="shadow-2xs overflow-hidden rounded-md border border-black/5 dark:border-white/10">
@@ -605,7 +575,7 @@ export default function Community(): JSX.Element {
               </div>
 
               {/* Node 1: Please Note Callout */}
-              <div className="rounded-md border border-black/[0.08] bg-purple-100/70 p-5 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#1e172a] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] sm:p-6">
+              <div className="rounded-md border border-black/[0.08] bg-purple-100/70 p-5 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#242328] dark:shadow-[0_2px_10px_rgba(0,0,0,0.22)] sm:p-6">
                 <div className="flex items-start gap-3.5">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-[#892CA0] text-white">
                     <Icon icon="material-symbols:info-rounded" className="text-lg text-white" />
@@ -628,15 +598,9 @@ export default function Community(): JSX.Element {
       {/* ============================================================
           SECTION 7: SUBMITTING ISSUES & PRS (Restored from Original)
       ============================================================ */}
-      <section id="contribute" className="bg-purple-100/50 py-16 dark:bg-[#161222] sm:py-20">
+      <section id="contribute" className="bg-purple-100/50 py-16 dark:bg-[#1B1B1D] sm:py-20">
         <div className="container mx-auto px-4 lg:px-8 xl:max-w-[1240px]">
           <div className="mb-10 text-center sm:mb-12">
-            <div
-              style={{ backgroundColor: '#892CA0', color: '#ffffff' }}
-              className="shadow-xs mb-3 inline-flex items-center gap-2 rounded-full bg-[#892CA0] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white">
-              <Icon icon="material-symbols:code-rounded" className="text-base text-white" />
-              <span className="text-white">Issues &amp; Contributions</span>
-            </div>
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {submittingIssues[0].title}
             </h2>
@@ -647,7 +611,7 @@ export default function Community(): JSX.Element {
 
           <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
             {/* Card 1: Submitting Issues */}
-            <div className="flex h-full flex-col justify-between rounded-md border border-black/[0.08] bg-white p-7 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#1e172a] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] sm:p-9">
+            <div className="flex h-full flex-col justify-between rounded-md border border-black/[0.08] bg-white p-7 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#242328] dark:shadow-[0_2px_10px_rgba(0,0,0,0.22)] sm:p-9">
               <div>
                 <div className="flex items-center gap-3">
                   <div className="shadow-xs flex h-11 w-11 items-center justify-center rounded-md bg-[#892CA0] text-white">
@@ -712,7 +676,7 @@ export default function Community(): JSX.Element {
             </div>
 
             {/* Card 2: Submitting Pull Requests */}
-            <div className="flex h-full flex-col justify-between rounded-md border border-black/[0.08] bg-white p-7 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#1e172a] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] sm:p-9">
+            <div className="flex h-full flex-col justify-between rounded-md border border-black/[0.08] bg-white p-7 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#242328] dark:shadow-[0_2px_10px_rgba(0,0,0,0.22)] sm:p-9">
               <div>
                 <div className="flex items-center gap-3">
                   <div className="shadow-xs flex h-11 w-11 items-center justify-center rounded-md bg-[#892CA0] text-white">

@@ -124,7 +124,7 @@ function TimeZoneBlock({ zone }: { zone: ZoneConfig }): JSX.Element {
 
 function DateTimeBox(): JSX.Element {
   return (
-    <div className="w-full rounded-md border border-black/[0.08] bg-white p-8 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#1e172a] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] sm:p-12">
+    <div className="w-full rounded-md border border-black/[0.08] bg-white p-8 shadow-[0_1px_3px_0_rgba(0,0,0,0.05)] dark:border-white/[0.08] dark:bg-[#242328] dark:shadow-[0_2px_10px_rgba(0,0,0,0.22)] sm:p-12">
       <BrowserOnly fallback={<div className="h-80 animate-pulse rounded-md bg-purple-100/50 dark:bg-white/5" />}>
         {() => (
           <>
