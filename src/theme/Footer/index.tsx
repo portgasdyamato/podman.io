@@ -78,19 +78,19 @@ function Footer(): JSX.Element | null {
   const { footer } = useThemeConfig();
   const podmanLogoUrl = useBaseUrl('logos/optimized/podman-3-logo-266w-253h.webp');
   const podmanDesktopLogoUrl = useBaseUrl('logos/optimized/podman-desktop-logo-200w-198h.webp');
-  const brandRevealRef = useRef<HTMLDivElement>(null);
-  const [isBrandVisible, setIsBrandVisible] = useState(false);
+  const footerRevealRef = useRef<HTMLElement>(null);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
 
   useEffect(() => {
-    const el = brandRevealRef.current;
+    const el = footerRevealRef.current;
     if (!el || typeof IntersectionObserver === 'undefined') {
-      setIsBrandVisible(true);
+      setIsFooterVisible(true);
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsBrandVisible(entry.isIntersecting);
+        setIsFooterVisible(entry.isIntersecting);
       },
       { threshold: 0.12 },
     );
@@ -107,32 +107,49 @@ function Footer(): JSX.Element | null {
   const columns = rawLinks.filter((col): col is { title?: string; items: FooterLinkItem[] } => 'items' in col);
 
   return (
-    <footer className="border-t border-white/20 bg-purple-700 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
+    <footer
+      ref={footerRevealRef}
+      className="overflow-hidden border-t border-white/20 bg-purple-700 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)]">
       <div className="mx-auto max-w-7xl px-5 pb-5 pt-7 sm:px-8 sm:pt-9 lg:px-10">
         {/* Top Section: Brand & Navigation Columns */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
-            <Link
-              to="/"
-              className={`inline-flex items-center gap-2.5 text-white hover:text-white dark:text-white dark:hover:text-white sm:gap-3 ${LINK_RESET}`}>
-              <img
-                src={podmanLogoUrl}
-                alt="Podman Logo"
-                width={67}
-                height={64}
-                className="h-11 w-auto sm:h-12"
-                loading="lazy"
-                decoding="async"
-              />
-              <span className="font-display text-xl font-bold tracking-tight text-white sm:text-2xl">podman</span>
-            </Link>
+            <div className="overflow-hidden py-1">
+              <Link
+                to="/"
+                className={`inline-flex items-center gap-3.5 text-white hover:text-white dark:text-white dark:hover:text-white sm:gap-4 ${LINK_RESET}`}>
+                <img
+                  src={podmanLogoUrl}
+                  alt="Podman Logo"
+                  width={101}
+                  height={96}
+                  className={`h-16 w-auto transition-all duration-[1300ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 sm:h-20 md:h-24 ${
+                    isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+                  }`}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span
+                  className={`font-display text-4xl font-extrabold leading-none tracking-tight text-white transition-all delay-100 duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 sm:text-5xl md:text-6xl ${
+                    isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+                  }`}>
+                  podman
+                </span>
+              </Link>
+            </div>
 
-            <p className="mt-2.5 max-w-xs text-xs leading-relaxed text-white/80 dark:text-white/80 sm:text-sm">
+            <p
+              className={`mt-2.5 max-w-xs text-xs leading-relaxed text-white/80 transition-all delay-100 duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 dark:text-white/80 sm:text-sm ${
+                isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+              }`}>
               A daemonless, open-source, Linux-native container engine for developing, managing, and running OCI
               Containers.
             </p>
 
-            <div className="mt-3.5 flex items-center gap-4">
+            <div
+              className={`mt-3.5 flex items-center gap-4 transition-all delay-150 duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 ${
+                isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+              }`}>
               {SOCIAL_LINKS.map(social => (
                 <a
                   key={social.label}
@@ -149,54 +166,38 @@ function Footer(): JSX.Element | null {
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:col-span-7 lg:pt-1">
-            {columns.map((col, idx) => (
-              <div key={col.title ?? idx}>
-                <h3 className="mb-2.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-purple-300 dark:text-purple-300">
-                  {col.title}
-                </h3>
-                <ul className="m-0 flex list-none flex-col gap-2 p-0">
-                  {col.items.map((item, itemIdx) => (
-                    <li key={item.label ?? itemIdx}>
-                      <FooterLink item={item} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {columns.map((col, idx) => {
+              const colDelay = idx === 0 ? 'delay-100' : idx === 1 ? 'delay-150' : 'delay-200';
+              return (
+                <div
+                  key={col.title ?? idx}
+                  className={`transition-all ${colDelay} duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 ${
+                    isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+                  }`}>
+                  <h3 className="mb-2.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-purple-300 dark:text-purple-300">
+                    {col.title}
+                  </h3>
+                  <ul className="m-0 flex list-none flex-col gap-2 p-0">
+                    {col.items.map((item, itemIdx) => (
+                      <li key={item.label ?? itemIdx}>
+                        <FooterLink item={item} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Big Podman Logo & Wordmark — Smooth Slow Slide-Up Reveal on Scroll */}
-        <div ref={brandRevealRef} className="mt-5 overflow-hidden py-2 sm:mt-6 sm:py-3" aria-hidden="true">
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5 md:gap-7">
-            <img
-              src={podmanLogoUrl}
-              alt=""
-              width={133}
-              height={126}
-              loading="lazy"
-              decoding="async"
-              className={`h-16 w-auto object-contain transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 sm:h-20 md:h-24 lg:h-28 ${
-                isBrandVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-              }`}
-            />
-            <span
-              className={`select-none font-display text-6xl font-extrabold leading-none tracking-tight text-white transition-all delay-100 duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 sm:text-7xl md:text-8xl lg:text-[7.5rem] ${
-                isBrandVisible ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'
-              }`}>
-              podman
-            </span>
-          </div>
-        </div>
-
-        {/* Foundation & Ecosystem Logos (Below Podman, No Top Separator, Smooth Slide-Up Reveal) */}
-        <div className="grid grid-cols-1 gap-5 overflow-hidden border-b border-white/15 py-4 sm:grid-cols-2 sm:py-5 lg:flex lg:flex-wrap lg:items-center lg:justify-between lg:gap-x-10 lg:gap-y-4">
+        {/* Foundation & Ecosystem Logos (Smooth Slide-Up Reveal on Scroll) */}
+        <div className="mt-7 grid grid-cols-1 gap-5 overflow-hidden border-b border-white/15 py-4 sm:mt-8 sm:grid-cols-2 sm:py-5 lg:flex lg:flex-wrap lg:items-center lg:justify-between lg:gap-x-10 lg:gap-y-4">
           <a
             href="https://www.cncf.io/"
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center text-white transition-all delay-150 duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform hover:text-white hover:opacity-80 motion-reduce:translate-y-0 motion-reduce:opacity-100 dark:text-white dark:hover:text-white ${LINK_RESET} ${
-              isBrandVisible ? 'translate-y-0 opacity-100' : 'translate-y-14 opacity-0'
+              isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-14 opacity-0'
             }`}
             title="Cloud Native Computing Foundation">
             <CncfWordmark className="h-9 w-auto max-w-full sm:h-10" />
@@ -207,7 +208,7 @@ function Footer(): JSX.Element | null {
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center text-white transition-all delay-200 duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform hover:text-white hover:opacity-80 motion-reduce:translate-y-0 motion-reduce:opacity-100 dark:text-white dark:hover:text-white ${LINK_RESET} ${
-              isBrandVisible ? 'translate-y-0 opacity-100' : 'translate-y-14 opacity-0'
+              isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-14 opacity-0'
             }`}
             title="LFX - The Linux Foundation">
             <LfxWordmark className="h-6 w-auto max-w-full sm:h-7" />
@@ -218,7 +219,7 @@ function Footer(): JSX.Element | null {
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center text-white transition-all delay-[250ms] duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform hover:text-white hover:opacity-80 motion-reduce:translate-y-0 motion-reduce:opacity-100 dark:text-white dark:hover:text-white ${LINK_RESET} ${
-              isBrandVisible ? 'translate-y-0 opacity-100' : 'translate-y-14 opacity-0'
+              isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-14 opacity-0'
             }`}
             title="Open Container Initiative">
             <OciWordmark className="h-9 w-auto max-w-full sm:h-10" />
@@ -229,7 +230,7 @@ function Footer(): JSX.Element | null {
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-3 text-white transition-all delay-300 duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform hover:text-white hover:opacity-80 motion-reduce:translate-y-0 motion-reduce:opacity-100 dark:text-white dark:hover:text-white ${LINK_RESET} ${
-              isBrandVisible ? 'translate-y-0 opacity-100' : 'translate-y-14 opacity-0'
+              isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-14 opacity-0'
             }`}
             title="Podman Desktop">
             <img
@@ -246,7 +247,10 @@ function Footer(): JSX.Element | null {
         </div>
 
         {/* Copyright & Legal */}
-        <div className="flex flex-col items-center justify-between gap-2.5 pt-4 text-center text-xs text-white/75 md:flex-row md:text-left">
+        <div
+          className={`flex flex-col items-center justify-between gap-2.5 pt-4 text-center text-xs text-white/75 transition-all delay-300 duration-[1300ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 md:flex-row md:text-left ${
+            isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}>
           <p className="m-0 text-center text-xs leading-normal text-white/75 dark:text-white/75 md:text-left">
             Copyright © {CURRENT_YEAR} Podman Container Tools, a Series of LF Projects, LLC.{' '}
             <a
