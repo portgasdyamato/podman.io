@@ -146,10 +146,7 @@ function Footer(): JSX.Element | null {
               Containers.
             </p>
 
-            <div
-              className={`mt-3.5 flex items-center gap-4 transition-all delay-150 duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 ${
-                isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-              }`}>
+            <div className="mt-3.5 flex items-center gap-4">
               {SOCIAL_LINKS.map(social => (
                 <a
                   key={social.label}
@@ -166,27 +163,20 @@ function Footer(): JSX.Element | null {
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:col-span-7 lg:pt-1">
-            {columns.map((col, idx) => {
-              const colDelay = idx === 0 ? 'delay-100' : idx === 1 ? 'delay-150' : 'delay-200';
-              return (
-                <div
-                  key={col.title ?? idx}
-                  className={`transition-all ${colDelay} duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 ${
-                    isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-                  }`}>
-                  <h3 className="mb-2.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-purple-300 dark:text-purple-300">
-                    {col.title}
-                  </h3>
-                  <ul className="m-0 flex list-none flex-col gap-2 p-0">
-                    {col.items.map((item, itemIdx) => (
-                      <li key={item.label ?? itemIdx}>
-                        <FooterLink item={item} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+            {columns.map((col, idx) => (
+              <div key={col.title ?? idx}>
+                <h3 className="mb-2.5 font-display text-[11px] font-bold uppercase tracking-[0.14em] text-purple-300 dark:text-purple-300">
+                  {col.title}
+                </h3>
+                <ul className="m-0 flex list-none flex-col gap-2 p-0">
+                  {col.items.map((item, itemIdx) => (
+                    <li key={item.label ?? itemIdx}>
+                      <FooterLink item={item} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -247,10 +237,7 @@ function Footer(): JSX.Element | null {
         </div>
 
         {/* Copyright & Legal */}
-        <div
-          className={`flex flex-col items-center justify-between gap-2.5 pt-4 text-center text-xs text-white/75 transition-all delay-300 duration-[1300ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform motion-reduce:translate-y-0 motion-reduce:opacity-100 md:flex-row md:text-left ${
-            isFooterVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}>
+        <div className="flex flex-col items-center justify-between gap-2.5 pt-4 text-center text-xs text-white/75 md:flex-row md:text-left">
           <p className="m-0 text-center text-xs leading-normal text-white/75 dark:text-white/75 md:text-left">
             Copyright © {CURRENT_YEAR} Podman Container Tools, a Series of LF Projects, LLC.{' '}
             <a
